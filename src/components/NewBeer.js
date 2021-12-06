@@ -5,10 +5,24 @@ import axios from 'axios';
 function NewBeer() {
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const {
+      name,
+      tagline,
+      description,
+      first_brewed,
+      brewers_tips,
+      attenuation_level,
+      contributed_by,
+    } = event.target;
+
     let newBeer = {
-      name: event.target.name.value,
-      description: event.target.description.value,
-      completed: false,
+      name: name.value,
+      tagline: tagline.value,
+      description: description.value,
+      first_brewed: first_brewed.value,
+      brewers_tips: brewers_tips.value,
+      attenuation_level: attenuation_level.value,
+      contributed_by: contributed_by.value,
     };
     await axios.post('https://ih-beers-api2.herokuapp.com/beers/new', newBeer);
   };
